@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photo Journal Entries Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="PhotoJournalEntriesController" customModule="PhotoJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EQv-ng-nNy">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="bWh-SC-U2h"/>
+                                    <barButtonItem image="plus" catalog="system" id="ACn-Hu-ezh"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="xRn-0o-iwE"/>
+                                </items>
+                            </toolbar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PAl-bf-t1x">
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fcU-1x-O2v">
+                                    <size key="itemSize" width="414" height="410"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="BUU-jd-3EU" customClass="PhotoCollectionViewCell" customModule="PhotoJournal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="410"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zDC-cu-uCY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="410"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bX3-Gr-cTh">
+                                                    <rect key="frame" x="0.0" y="36.5" width="414" height="287"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZc-yS-Y9q" userLabel="TitleLabel">
+                                                    <rect key="frame" x="8" y="8" width="398" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRb-c7-ppX" userLabel="DateLabel">
+                                                    <rect key="frame" x="8" y="381" width="398" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgp-YK-Pac">
+                                                    <rect key="frame" x="360" y="331.5" width="46" height="30"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bX3-Gr-cTh" firstAttribute="leading" secondItem="zDC-cu-uCY" secondAttribute="leading" id="1X0-j5-Ewe"/>
+                                                <constraint firstAttribute="bottom" secondItem="BRb-c7-ppX" secondAttribute="bottom" constant="8" id="8wz-n9-UbX"/>
+                                                <constraint firstAttribute="trailing" secondItem="BRb-c7-ppX" secondAttribute="trailing" constant="8" id="CJ6-ly-5wl"/>
+                                                <constraint firstAttribute="trailing" secondItem="bX3-Gr-cTh" secondAttribute="trailing" id="E9S-fH-BwM"/>
+                                                <constraint firstItem="aZc-yS-Y9q" firstAttribute="top" secondItem="zDC-cu-uCY" secondAttribute="top" constant="8" id="LuX-Ho-1H4"/>
+                                                <constraint firstAttribute="trailing" secondItem="tgp-YK-Pac" secondAttribute="trailing" constant="8" id="NXB-Ur-kaL"/>
+                                                <constraint firstItem="bX3-Gr-cTh" firstAttribute="top" secondItem="aZc-yS-Y9q" secondAttribute="bottom" constant="8" id="NnG-ZP-Lk4"/>
+                                                <constraint firstItem="BRb-c7-ppX" firstAttribute="leading" secondItem="zDC-cu-uCY" secondAttribute="leading" constant="8" id="X5q-0c-vBI"/>
+                                                <constraint firstItem="bX3-Gr-cTh" firstAttribute="height" secondItem="zDC-cu-uCY" secondAttribute="height" multiplier="0.7" id="dRc-Py-Pta"/>
+                                                <constraint firstAttribute="trailing" secondItem="aZc-yS-Y9q" secondAttribute="trailing" constant="8" id="fQL-B5-eJG"/>
+                                                <constraint firstItem="tgp-YK-Pac" firstAttribute="top" secondItem="bX3-Gr-cTh" secondAttribute="bottom" constant="8" id="hmM-ct-IXj"/>
+                                                <constraint firstItem="aZc-yS-Y9q" firstAttribute="leading" secondItem="zDC-cu-uCY" secondAttribute="leading" constant="8" id="zUq-Sl-WAN"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="414" height="410"/>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="BRb-c7-ppX" id="Y9X-c9-7TR"/>
+                                            <outlet property="imageView" destination="bX3-Gr-cTh" id="hy3-ef-vjH"/>
+                                            <outlet property="optionsButton" destination="tgp-YK-Pac" id="ppS-ln-3a3"/>
+                                            <outlet property="titleLabel" destination="aZc-yS-Y9q" id="dJE-wy-EsC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EQv-ng-nNy" firstAttribute="top" secondItem="PAl-bf-t1x" secondAttribute="bottom" id="1fz-ky-OKg"/>
+                            <constraint firstItem="EQv-ng-nNy" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="3kb-om-U7n"/>
+                            <constraint firstItem="PAl-bf-t1x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Mmi-JL-c67"/>
+                            <constraint firstItem="EQv-ng-nNy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XMO-3j-ZKD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PAl-bf-t1x" secondAttribute="trailing" id="e7e-mQ-DV8"/>
+                            <constraint firstItem="PAl-bf-t1x" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="vCl-zn-uiK"/>
+                            <constraint firstItem="EQv-ng-nNy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="yiF-FD-SOt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="PAl-bf-t1x" id="Ns3-Lx-wJ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+        <!--Photo Journal Entry View Controller-->
+        <scene sceneID="kpR-zZ-pGK">
+            <objects>
+                <viewController storyboardIdentifier="PhotoJournalEntryViewController" id="ra3-MV-Obh" customClass="PhotoJournalEntryViewController" customModule="PhotoJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zxe-kZ-Sby">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="JZo-Ay-wmX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSj-IE-Kud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1122" y="142"/>
+        </scene>
+        <!--User Settings View Controller-->
+        <scene sceneID="CEK-HT-zdq">
+            <objects>
+                <viewController storyboardIdentifier="UserSettingsViewController" id="pB3-DR-isf" customClass="UserSettingsViewController" customModule="PhotoJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vPk-qT-twA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="kap-Qi-X0T"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vbm-rt-yM1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="522" y="-544"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="plus" catalog="system" width="64" height="56"/>
+    </resources>
+</document>
