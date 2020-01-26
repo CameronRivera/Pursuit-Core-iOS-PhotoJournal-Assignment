@@ -9,9 +9,9 @@
 import UIKit
 
 extension UIViewController {
-    func showAlert(_ title: String, _ message: String) {
+    func showAlert(_ title: String, _ message: String, completion: ((UIAlertAction) -> ())? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let alert = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let alert = UIAlertAction(title: "Ok", style: .default, handler: completion)
         alertController.addAction(alert)
         present(alertController, animated: true)
     }

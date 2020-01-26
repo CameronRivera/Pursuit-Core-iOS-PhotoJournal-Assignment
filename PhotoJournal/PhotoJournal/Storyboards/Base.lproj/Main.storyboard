@@ -55,19 +55,23 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRb-c7-ppX" userLabel="DateLabel">
-                                                    <rect key="frame" x="8" y="381" width="398" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="8" y="390" width="398" height="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgp-YK-Pac">
-                                                    <rect key="frame" x="360" y="331.5" width="46" height="30"/>
+                                                    <rect key="frame" x="323" y="331.5" width="83" height="30"/>
                                                     <state key="normal" title="Button"/>
+                                                    <connections>
+                                                        <action selector="buttonPressed:" destination="BUU-jd-3EU" eventType="touchUpInside" id="g6B-ea-aSA"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="bX3-Gr-cTh" firstAttribute="leading" secondItem="zDC-cu-uCY" secondAttribute="leading" id="1X0-j5-Ewe"/>
                                                 <constraint firstAttribute="bottom" secondItem="BRb-c7-ppX" secondAttribute="bottom" constant="8" id="8wz-n9-UbX"/>
+                                                <constraint firstItem="tgp-YK-Pac" firstAttribute="width" secondItem="zDC-cu-uCY" secondAttribute="width" multiplier="0.2" id="9UY-Zk-IQY"/>
                                                 <constraint firstAttribute="trailing" secondItem="BRb-c7-ppX" secondAttribute="trailing" constant="8" id="CJ6-ly-5wl"/>
                                                 <constraint firstAttribute="trailing" secondItem="bX3-Gr-cTh" secondAttribute="trailing" id="E9S-fH-BwM"/>
                                                 <constraint firstItem="aZc-yS-Y9q" firstAttribute="top" secondItem="zDC-cu-uCY" secondAttribute="top" constant="8" id="LuX-Ho-1H4"/>
@@ -176,7 +180,11 @@
                         <viewLayoutGuide key="safeArea" id="JZo-Ay-wmX"/>
                     </view>
                     <navigationItem key="navigationItem" id="1Qh-Jq-g3b">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="sJT-rh-Uix" userLabel="SaveChanges"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="sJT-rh-Uix" userLabel="SaveChanges">
+                            <connections>
+                                <action selector="saveChangesButtonPressed:" destination="ra3-MV-Obh" id="AMw-Dd-MFg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cameraButton" destination="o0Q-ZH-iEh" id="w59-ST-9ds"/>

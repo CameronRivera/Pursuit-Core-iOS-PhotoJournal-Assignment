@@ -22,6 +22,7 @@
 		C4BA362F23D9019300635683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BA362E23D9019300635683 /* Assets.xcassets */; };
 		C4BA363223D9019300635683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BA363023D9019300635683 /* LaunchScreen.storyboard */; };
 		C4BA363D23D9019400635683 /* PhotoJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BA363C23D9019400635683 /* PhotoJournalTests.swift */; };
+		C4FF4D8723DE28E90061CA1C /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FF4D8623DE28E90061CA1C /* UIImage+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		C4BA363823D9019400635683 /* PhotoJournalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoJournalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BA363C23D9019400635683 /* PhotoJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoJournalTests.swift; sourceTree = "<group>"; };
 		C4BA363E23D9019400635683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4FF4D8623DE28E90061CA1C /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				C40388E723DA24CC0033A691 /* UIViewController+Extensions.swift */,
 				C40388E923DA25DA0033A691 /* FIleManager+Extensions.swift */,
 				C40388F323DA43F90033A691 /* String+Extensions.swift */,
+				C4FF4D8623DE28E90061CA1C /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				C4BA362A23D9018F00635683 /* PhotoJournalEntriesController.swift in Sources */,
 				C4BA362623D9018F00635683 /* AppDelegate.swift in Sources */,
 				C40388EA23DA25DA0033A691 /* FIleManager+Extensions.swift in Sources */,
+				C4FF4D8723DE28E90061CA1C /* UIImage+Extensions.swift in Sources */,
 				C4BA362823D9018F00635683 /* SceneDelegate.swift in Sources */,
 				C40388EF23DA31920033A691 /* PhotoCollectionViewCell.swift in Sources */,
 				C40388E823DA24CC0033A691 /* UIViewController+Extensions.swift in Sources */,

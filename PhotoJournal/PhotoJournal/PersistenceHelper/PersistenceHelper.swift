@@ -17,7 +17,7 @@ struct PersistenceHelper<T: Codable & Equatable>{
     }
     
     func getObjects() throws -> [T] {
-        guard FileManager.default.fileExists(atPath: fileName), let data = FileManager.default.contents(atPath: fileName) else {
+        guard let data = FileManager.default.contents(atPath: FileManager.default.pathToFile(fileName).path) else {
             return []
         }
         return try PropertyListDecoder().decode([T].self, from: data)
