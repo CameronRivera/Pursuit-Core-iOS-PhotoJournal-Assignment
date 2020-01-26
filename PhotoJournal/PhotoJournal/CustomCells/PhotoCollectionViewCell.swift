@@ -15,7 +15,15 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    private func setUp(){
-        
+    public func setUp(_ entry: PhotoJournalEntry){
+        optionsButton.setTitle("", for: .normal)
+        optionsButton.setBackgroundImage( UIImage(systemName: "ellipsis"), for: .normal)
+        titleLabel.text = entry.title
+        dateLabel.text = dateLabel.text?.dateToString(Date())
+        if let picture = UIImage(data: entry.imageData){
+            imageView.image = picture
+        } else {
+            imageView.image = UIImage(systemName: "exclamationmark.triangle")
+        }
     }
 }

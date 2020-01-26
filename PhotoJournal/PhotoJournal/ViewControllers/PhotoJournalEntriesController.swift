@@ -12,16 +12,28 @@ class PhotoJournalEntriesController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var savedPhotos = ["Flat", "Wide", "Round", "Pizza", "Potatoes", "Piano"]
+    var savedPhotos = [PhotoJournalEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         setUp()
     }
 
     private func setUp(){
+        navigationItem.title = "Photo Journal Entries"
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+    
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem){
+        guard let photoJournalEntryVC = storyboard?.instantiateViewController(identifier: "PhotoJournalEntryViewController") as? PhotoJournalEntryViewController else {
+            fatalError("Error encountered while attempting to create an instance of PhotoJournalEntryViewController.")
+        }
+        navigationController?.pushViewController(photoJournalEntryVC, animated: true)
     }
     
 }
@@ -36,8 +48,7 @@ extension PhotoJournalEntriesController: UICollectionViewDataSource{
         guard let xCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCollectionViewCell", for: indexPath) as? PhotoCollectionViewCell else {
             fatalError("Could not dequeue collectionViewCell as a PhotoCollectionViewCell")
         }
-        xCell.imageView.image = UIImage(systemName: "film")
-        xCell.backgroundColor = .darkGray
+        xCell.setUp(savedPhotos[indexPath.row])
         return xCell
     }
 }

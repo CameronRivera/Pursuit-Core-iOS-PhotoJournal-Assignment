@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5zJ-mH-nCR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -20,12 +20,16 @@
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bWh-SC-U2h"/>
-                                    <barButtonItem image="plus" catalog="system" id="ACn-Hu-ezh"/>
+                                    <barButtonItem image="plus" catalog="system" id="ACn-Hu-ezh">
+                                        <connections>
+                                            <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="U6T-sL-7vg"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xRn-0o-iwE"/>
                                 </items>
                             </toolbar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PAl-bf-t1x">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fcU-1x-O2v">
                                     <size key="itemSize" width="414" height="410"/>
@@ -99,13 +103,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Hkn-qS-fIa"/>
                     <connections>
                         <outlet property="collectionView" destination="PAl-bf-t1x" id="Ns3-Lx-wJ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="129.91071428571428"/>
         </scene>
         <!--Photo Journal Entry View Controller-->
         <scene sceneID="kpR-zZ-pGK">
@@ -114,13 +119,75 @@
                     <view key="view" contentMode="scaleToFill" id="zxe-kZ-Sby">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7C-eZ-Zwl">
+                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <items>
+                                    <barButtonItem title="Local Photos" id="2RN-7Q-Phq">
+                                        <connections>
+                                            <action selector="photolibraryButtonPressed:" destination="ra3-MV-Obh" id="Z21-Za-8ad"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Adj-Nl-g5x"/>
+                                    <barButtonItem title="Take Photo" id="o0Q-ZH-iEh">
+                                        <connections>
+                                            <action selector="takeNewPhotoButtonPressed:" destination="ra3-MV-Obh" id="86o-j4-gZk"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hLS-qL-Ekx">
+                                <rect key="frame" x="20" y="105" width="374" height="269"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AS-b3-uoE">
+                                <rect key="frame" x="20" y="382" width="374" height="431"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z0m-wG-HJm">
+                                        <rect key="frame" x="20" y="43" width="334" height="345"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Z0m-wG-HJm" secondAttribute="trailing" constant="20" id="2TH-Dm-wh2"/>
+                                    <constraint firstItem="Z0m-wG-HJm" firstAttribute="centerY" secondItem="0AS-b3-uoE" secondAttribute="centerY" id="DRI-jh-9cE"/>
+                                    <constraint firstItem="Z0m-wG-HJm" firstAttribute="height" secondItem="0AS-b3-uoE" secondAttribute="height" multiplier="0.8" id="Ng8-Ss-hM2"/>
+                                    <constraint firstItem="Z0m-wG-HJm" firstAttribute="leading" secondItem="0AS-b3-uoE" secondAttribute="leading" constant="20" id="zwV-8f-tO0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="hLS-qL-Ekx" firstAttribute="leading" secondItem="JZo-Ay-wmX" secondAttribute="leading" constant="20" id="Cdu-JT-18M"/>
+                            <constraint firstItem="0AS-b3-uoE" firstAttribute="top" secondItem="hLS-qL-Ekx" secondAttribute="bottom" constant="8" symbolic="YES" id="KRi-wY-sE2"/>
+                            <constraint firstItem="L7C-eZ-Zwl" firstAttribute="leading" secondItem="JZo-Ay-wmX" secondAttribute="leading" id="L2c-ea-pec"/>
+                            <constraint firstItem="L7C-eZ-Zwl" firstAttribute="top" secondItem="0AS-b3-uoE" secondAttribute="bottom" id="Pne-ge-Opl"/>
+                            <constraint firstItem="hLS-qL-Ekx" firstAttribute="top" secondItem="JZo-Ay-wmX" secondAttribute="top" constant="17" id="RQn-iN-2Op"/>
+                            <constraint firstItem="0AS-b3-uoE" firstAttribute="leading" secondItem="JZo-Ay-wmX" secondAttribute="leading" constant="20" id="Wbw-bS-dlD"/>
+                            <constraint firstItem="L7C-eZ-Zwl" firstAttribute="bottom" secondItem="JZo-Ay-wmX" secondAttribute="bottom" id="aEM-Dx-dmN"/>
+                            <constraint firstItem="L7C-eZ-Zwl" firstAttribute="trailing" secondItem="JZo-Ay-wmX" secondAttribute="trailing" id="m81-De-aGa"/>
+                            <constraint firstItem="hLS-qL-Ekx" firstAttribute="height" secondItem="zxe-kZ-Sby" secondAttribute="height" multiplier="0.3" id="sQE-gl-Fhw"/>
+                            <constraint firstItem="JZo-Ay-wmX" firstAttribute="trailing" secondItem="hLS-qL-Ekx" secondAttribute="trailing" constant="20" id="uOu-3Z-C3b"/>
+                            <constraint firstItem="JZo-Ay-wmX" firstAttribute="trailing" secondItem="0AS-b3-uoE" secondAttribute="trailing" constant="20" id="uRZ-az-WSV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JZo-Ay-wmX"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1Qh-Jq-g3b">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="sJT-rh-Uix" userLabel="SaveChanges"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="cameraButton" destination="o0Q-ZH-iEh" id="w59-ST-9ds"/>
+                        <outlet property="imageView" destination="Z0m-wG-HJm" id="wPm-Th-4OW"/>
+                        <outlet property="localPhotosButton" destination="2RN-7Q-Phq" id="hOq-Gg-tbq"/>
+                        <outlet property="textView" destination="hLS-qL-Ekx" id="eeh-Hk-Uei"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSj-IE-Kud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1122" y="142"/>
+            <point key="canvasLocation" x="2942.0289855072465" y="141.96428571428569"/>
         </scene>
         <!--User Settings View Controller-->
         <scene sceneID="CEK-HT-zdq">
@@ -136,6 +203,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbm-rt-yM1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="522" y="-544"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ScH-zp-7OP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5zJ-mH-nCR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rCa-Gx-KCA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DHV-vz-jod"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LnX-w7-5Ya" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="129.91071428571428"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Gjb-j6-dJw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yzz-kF-PDK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wHE-sa-LvU">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ra3-MV-Obh" kind="relationship" relationship="rootViewController" id="uue-LN-MIT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7J-cL-ugl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2031.8840579710147" y="141.96428571428569"/>
         </scene>
     </scenes>
     <resources>
