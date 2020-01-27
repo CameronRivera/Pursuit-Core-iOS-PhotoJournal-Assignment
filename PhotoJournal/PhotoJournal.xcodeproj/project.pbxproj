@@ -23,6 +23,7 @@
 		C4BA363223D9019300635683 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BA363023D9019300635683 /* LaunchScreen.storyboard */; };
 		C4BA363D23D9019400635683 /* PhotoJournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BA363C23D9019400635683 /* PhotoJournalTests.swift */; };
 		C4FF4D8723DE28E90061CA1C /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FF4D8623DE28E90061CA1C /* UIImage+Extensions.swift */; };
+		C4FF4D8A23DE71A00061CA1C /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FF4D8923DE71A00061CA1C /* UserPreferences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		C4BA363C23D9019400635683 /* PhotoJournalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoJournalTests.swift; sourceTree = "<group>"; };
 		C4BA363E23D9019400635683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4FF4D8623DE28E90061CA1C /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		C4FF4D8923DE71A00061CA1C /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 		C4BA362423D9018F00635683 /* PhotoJournal */ = {
 			isa = PBXGroup;
 			children = (
+				C4FF4D8823DE71900061CA1C /* UserDefaults */,
 				C40388F023DA425D0033A691 /* Model */,
 				C40388ED23DA2E2D0033A691 /* CustomCells */,
 				C40388E623DA24BA0033A691 /* Extensions */,
@@ -180,6 +183,14 @@
 				C40388EB23DA26EE0033A691 /* PersistenceHelper.swift */,
 			);
 			path = PersistenceHelper;
+			sourceTree = "<group>";
+		};
+		C4FF4D8823DE71900061CA1C /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				C4FF4D8923DE71A00061CA1C /* UserPreferences.swift */,
+			);
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,6 +298,7 @@
 				C40388F423DA43F90033A691 /* String+Extensions.swift in Sources */,
 				C40388F223DA427E0033A691 /* PhotoJournalEntry.swift in Sources */,
 				C4BA362A23D9018F00635683 /* PhotoJournalEntriesController.swift in Sources */,
+				C4FF4D8A23DE71A00061CA1C /* UserPreferences.swift in Sources */,
 				C4BA362623D9018F00635683 /* AppDelegate.swift in Sources */,
 				C40388EA23DA25DA0033A691 /* FIleManager+Extensions.swift in Sources */,
 				C4FF4D8723DE28E90061CA1C /* UIImage+Extensions.swift in Sources */,

@@ -9,6 +9,7 @@
 import UIKit
 import AVFoundation
 
+// Used to determine whether an edit, or an add is happening.
 enum SeguedState{
     case fromEdit
     case fromAdd
@@ -16,11 +17,13 @@ enum SeguedState{
 
 class PhotoJournalEntryViewController: UIViewController {
     
+    // MARK: Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var localPhotosButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    // MARK: Properties
     var currentEntry: PhotoJournalEntry?
     var persistenceHandler = PersistenceHelper<PhotoJournalEntry>("JournalEntries.plist")
     var state = SeguedState.fromAdd
@@ -28,6 +31,7 @@ class PhotoJournalEntryViewController: UIViewController {
     
     private var imagePickerController = UIImagePickerController()
     
+    // MARK: Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
@@ -42,12 +46,14 @@ class PhotoJournalEntryViewController: UIViewController {
         imageView.layer.borderWidth = 1.0
     }
     
+    // MARK: Helper Methods
     private func setUp(){
         imagePickerController.delegate = self
         navigationItem.rightBarButtonItem?.title = "Save Changes"
         navigationItem.rightBarButtonItem?.isEnabled = false
         textView.textColor = UIColor.black
         textView.delegate = self
+        setBackgroundColor()
         
         if state == SeguedState.fromEdit{
             editSetUp()
@@ -61,6 +67,7 @@ class PhotoJournalEntryViewController: UIViewController {
         }
     }
     
+    // Adds additional setUp if an entry is being edited and not added.
     private func editSetUp(){
         guard let entry = currentEntry,
             let image = UIImage(data: entry.imageData) else {
@@ -73,6 +80,17 @@ class PhotoJournalEntryViewController: UIViewController {
         textView.text = entry.title
     }
     
+    // Sets the background colour based on the user's settings
+    private func setBackgroundColor() {
+        
+        if let colour = UserPreferences.shared.loadBackgroundColour() {
+            view.backgroundColor = UIColor(displayP3Red: colour.red, green: colour.green, blue: colour.blue, alpha: colour.alpha)
+        } else {
+            view.backgroundColor = UIColor.white
+        }
+    }
+    
+    // MARK: Actions
     @IBAction func photolibraryButtonPressed(_ sender: UIBarButtonItem){
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true)
@@ -113,6 +131,7 @@ class PhotoJournalEntryViewController: UIViewController {
 
 }
 
+// MARK: UIImagePickerControllerDelegate, and UINavigationControllerDelegate Methods
 extension PhotoJournalEntryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -141,11 +160,8 @@ extension PhotoJournalEntryViewController: UIImagePickerControllerDelegate, UINa
     }
 }
 
+// MARK: UITextViewDelegate Methods
 extension PhotoJournalEntryViewController: UITextViewDelegate{
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.text = ""
-    }
     
     func textViewDidChange(_ textView: UITextView) {
         guard imageView.image != nil else {

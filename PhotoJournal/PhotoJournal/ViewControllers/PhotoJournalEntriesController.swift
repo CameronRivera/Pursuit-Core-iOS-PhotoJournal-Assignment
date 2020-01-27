@@ -10,8 +10,10 @@ import UIKit
 
 class PhotoJournalEntriesController: UIViewController {
     
+    // MARK: Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     
+    // MARK: Properties
     var savedPhotos = [PhotoJournalEntry](){
         didSet{
             collectionView.reloadData()
@@ -19,6 +21,7 @@ class PhotoJournalEntriesController: UIViewController {
     }
     var persistenceHandler = PersistenceHelper<PhotoJournalEntry>("JournalEntries.plist")
     
+    // MARK: LifeCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,17 +31,22 @@ class PhotoJournalEntriesController: UIViewController {
         setUp()
     }
     
+    // MARK: Helper Methods
+    // Basic View Controller Setup
     private func setUp(){
+        setUpScrollDirection()
+        setUpBackgroundColour()
         navigationItem.title = "Photo Journal Entries"
         collectionView.dataSource = self
         collectionView.delegate = self
+        
         do {
             savedPhotos = try persistenceHandler.getObjects()
         } catch {
             print("Error Loading Entries: \(error)")
         }
     }
-    
+    // Deletes an entry
     private func deleteEntry(at position: Int){
         do {
             try persistenceHandler.remove(position)
@@ -47,6 +55,35 @@ class PhotoJournalEntriesController: UIViewController {
         }
     }
     
+    // Sets the Scroll Direction
+    private func setUpScrollDirection(){
+        guard let direction = UserPreferences.shared.loadScrollDirection() else {
+            if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+                flowLayout.scrollDirection = .vertical
+            }
+            return
+        }
+        
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            if direction == "horizontal"{
+                flowLayout.scrollDirection = .horizontal
+            } else {
+                flowLayout.scrollDirection = .vertical
+            }
+        }
+    }
+    
+    // Sets the collection View's Background Colour
+    private func setUpBackgroundColour() {
+        guard let backgroundColour = UserPreferences.shared.loadBackgroundColour() else {
+            collectionView.backgroundColor = UIColor(named: "White") ?? UIColor.white
+            view.backgroundColor = UIColor(named: "White") ?? UIColor.white
+            return
+        }
+        collectionView.backgroundColor = UIColor(displayP3Red: backgroundColour.red, green: backgroundColour.green, blue: backgroundColour.blue, alpha: backgroundColour.alpha)
+    }
+    
+    // MARK: Actions
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem){
         guard let photoJournalEntryVC = storyboard?.instantiateViewController(identifier: "PhotoJournalEntryViewController") as? PhotoJournalEntryViewController else {
             fatalError("Error encountered while attempting to create an instance of PhotoJournalEntryViewController.")
@@ -55,8 +92,16 @@ class PhotoJournalEntriesController: UIViewController {
         navigationController?.pushViewController(photoJournalEntryVC, animated: true)
     }
     
+    @IBAction func settingsButtonPressed(_ sender: UIBarButtonItem) {
+        guard let settingsVC = storyboard?.instantiateViewController(identifier: "UserSettingsViewController") as? UserSettingsViewController else {
+            fatalError("Could not create an instance of UserSettingsViewController")
+        }
+        navigationController?.pushViewController(settingsVC, animated: true)
+    }
+    
 }
 
+// MARK: CollectionViewDataSource Methods
 extension PhotoJournalEntriesController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -73,12 +118,18 @@ extension PhotoJournalEntriesController: UICollectionViewDataSource{
     }
 }
 
+// MARK: CollectionViewDelegateFlowLayout Methods
 extension PhotoJournalEntriesController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.width * 0.8)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
+    }
 }
 
+// MARK: Custom Delegate Method
 extension PhotoJournalEntriesController: PhotoCollectionViewCellDelegate {
     
     func displaySettings(_ cell: PhotoCollectionViewCell) {
