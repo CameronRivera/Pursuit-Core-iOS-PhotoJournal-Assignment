@@ -35,6 +35,12 @@ struct PersistenceHelper<T: Codable & Equatable>{
         try serializeAndSave(savedObjects)
     }
     
+    func edit(_ index: Int, _ entry: T) throws{
+        var savedObjects = try getObjects()
+        savedObjects[index] = entry
+        try serializeAndSave(savedObjects)
+    }
+    
     func serializeAndSave(_ savedObjects: [T]) throws {
         let dataToWrite = try PropertyListEncoder().encode(savedObjects)
         try dataToWrite.write(to: FileManager.default.pathToFile(fileName), options: Data.WritingOptions.atomic)
